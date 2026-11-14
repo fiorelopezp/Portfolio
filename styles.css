@@ -76,8 +76,37 @@ h1, h2, h3, p { margin: 0; }
 .service { border: 1px solid var(--line); border-radius: 6px; padding: 26px 26px 32px; display: grid; align-content: start; gap: 6px; background: var(--paper); transition: transform .35s var(--ease), box-shadow .35s; }
 .service:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(21,20,16,.07); }
 .service .num { font-size: 12px; color: var(--muted); }
-.service .icon { width: 64px; height: 64px; margin: 24px 0 64px; fill: none; stroke: var(--ink); stroke-width: 1; transition: transform .6s var(--ease); }
-.service:hover .icon { transform: rotate(-8deg) scale(1.06); }
+.service .icon { width: 96px; height: 96px; margin: 20px 0 56px; fill: none; stroke: var(--ink); stroke-width: .8; overflow: visible; }
+.service .icon * { transform-box: fill-box; transform-origin: center; }
+
+/* Animated icons (loop) */
+/* 001 UX: circles pulse like ripples */
+.icon-ux .c { animation: pulse 3.2s var(--ease) infinite; }
+.icon-ux .c2 { animation-delay: .18s; } .icon-ux .c3 { animation-delay: .36s; }
+.icon-ux .ripple { animation: ripple 3.2s ease-out infinite; }
+@keyframes pulse { 0%, 100% { transform: scale(1); } 35% { transform: scale(1.18); } 60% { transform: scale(.94); } }
+@keyframes ripple { 0% { transform: scale(1); opacity: .9; } 70%, 100% { transform: scale(2.3); opacity: 0; } }
+
+/* 002 UI: cube turns inside the hexagon */
+.icon-ui .hex { animation: spin 14s linear infinite; }
+.icon-ui .cube { animation: cube 4.8s var(--ease) infinite; }
+@keyframes cube { 0% { transform: rotate(0) scale(1); } 40% { transform: rotate(-120deg) scale(1.12); } 50%, 100% { transform: rotate(-120deg) scale(1); } }
+
+/* 003 Design System: blocks swap places */
+.icon-ds .b { animation: 5s var(--ease) infinite; }
+.icon-ds .a1 { animation-name: ds-a1; } .icon-ds .a2 { animation-name: ds-a2; }
+.icon-ds .b1 { animation-name: ds-b1; animation-delay: .25s; } .icon-ds .b2 { animation-name: ds-b2; animation-delay: .25s; }
+.icon-ds .c1 { animation-name: ds-a1; animation-delay: .5s; } .icon-ds .c2 { animation-name: ds-a2; animation-delay: .5s; }
+@keyframes ds-a1 { 0%, 15% { transform: translateX(0); } 35%, 65% { transform: translateX(20px); } 85%, 100% { transform: translateX(0); } }
+@keyframes ds-a2 { 0%, 15% { transform: translateX(0); } 35%, 65% { transform: translateX(-38px); } 85%, 100% { transform: translateX(0); } }
+@keyframes ds-b1 { 0%, 15% { transform: translateX(0); } 35%, 65% { transform: translateX(36px); } 85%, 100% { transform: translateX(0); } }
+@keyframes ds-b2 { 0%, 15% { transform: translateX(0); } 35%, 65% { transform: translateX(-22px); } 85%, 100% { transform: translateX(0); } }
+
+/* 004 Accessibility: the shape draws itself and floats */
+.icon-a11y .float { animation: float 4s ease-in-out infinite; }
+.icon-a11y .draw { stroke-dasharray: 100; animation: draw 6s var(--ease) infinite; }
+@keyframes float { 0%, 100% { transform: translateY(0) rotate(-4deg); } 50% { transform: translateY(-4px) rotate(4deg); } }
+@keyframes draw { 0% { stroke-dashoffset: 100; } 45%, 80% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: -100; } }
 .service h3 { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; }
 .service .lead { font-size: 15px; font-weight: 500; margin-bottom: 14px; }
 .service .desc { font-size: 15px; color: var(--muted); line-height: 1.6; }
