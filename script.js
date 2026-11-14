@@ -9,15 +9,14 @@ const root = document.documentElement;
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 // ---------- 1. Language ----------
-// Texts live in index.html as data-lang="en" / data-lang="es" pairs.
-const titles = {
-  en: 'Fiorella López Piraino · Senior Product Designer',
-  es: 'Fiorella López Piraino · Senior Product Designer',
-};
+// Texts live in each page as data-lang="en" / data-lang="es" pairs.
+// The page title can change with the language: <title data-en="…" data-es="…">.
+const titleEl = document.querySelector('title');
 function setLang(lang) {
   root.lang = lang;
-  document.title = titles[lang];
+  if (titleEl && titleEl.dataset[lang]) document.title = titleEl.dataset[lang];
   document.querySelectorAll('[data-set-lang]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.setLang === lang)));
+  document.querySelectorAll('[data-alt-en]').forEach((img) => { img.alt = img.dataset[lang === 'es' ? 'altEs' : 'altEn']; });
   try { localStorage.setItem('lang', lang); } catch (e) { /* storage not available: fine */ }
   restartTyping();
 }
@@ -36,6 +35,7 @@ let typingTimer = null;
 
 function restartTyping() {
   clearTimeout(typingTimer);
+  if (!typedEl) return; // only the home has the typing effect
   const list = phrases.en; // the hero always stays in English
   if (reduceMotion) { typedEl.textContent = list[0]; return; }
   let i = 0;           // which phrase
@@ -63,7 +63,10 @@ if ('IntersectionObserver' in window && !reduceMotion) {
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
   revealItems.forEach((el, i) => {
-    el.style.transitionDelay = (el.matches('.service, .project') ? (i % 4) * 0.08 : 0) + 's';
+    // Cards in a row appear one after the other (cascade)
+    const stagger = el.matches('.service, .project') ? (i % 4) * 0.08
+      : el.closest('.stagger') ? Array.prototype.indexOf.call(el.parentNode.children, el) * 0.09 : 0;
+    el.style.transitionDelay = stagger + 's';
     io.observe(el);
   });
 } else {
@@ -76,8 +79,8 @@ const floatBtn = document.querySelector('.float-contact');
 let lastY = window.scrollY;
 window.addEventListener('scroll', () => {
   const y = window.scrollY;
-  header.classList.toggle('is-hidden', y > lastY && y > 140);
-  floatBtn.classList.toggle('is-visible', y > 600);
+  if (header) header.classList.toggle('is-hidden', y > lastY && y > 140);
+  if (floatBtn) floatBtn.classList.toggle('is-visible', y > 600);
   lastY = y;
 }, { passive: true });
 
@@ -102,4 +105,26 @@ if (cursor && window.matchMedia('(pointer: fine)').matches) {
   });
 } else {
   document.querySelectorAll('.project').forEach((p) => (p.style.cursor = 'pointer'));
+}
+
+// ---------- 7. Case study video: plays when it reaches the screen ----------
+// Browsers only allow sound after the visitor has clicked or tapped the page.
+// So: try with sound; if the browser blocks it, play muted and show "Turn sound on".
+const video = document.querySelector('.case-video video');
+if (video && 'IntersectionObserver' in window) {
+  const soundBtn = document.querySelector('.sound-btn');
+  const showSoundBtn = (show) => soundBtn && soundBtn.classList.toggle('is-visible', show);
+  const play = () => {
+    video.muted = false;
+    video.play().then(() => showSoundBtn(false)).catch(() => {
+      video.muted = true;
+      video.play().catch(() => {});
+      showSoundBtn(true);
+    });
+  };
+  if (soundBtn) soundBtn.addEventListener('click', () => { video.muted = false; video.play(); showSoundBtn(false); });
+  video.addEventListener('volumechange', () => { if (!video.muted) showSoundBtn(false); });
+  new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) play(); else video.pause(); });
+  }, { threshold: 0.5 }).observe(video);
 }
