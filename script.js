@@ -24,10 +24,9 @@ function setLang(lang) {
 document.querySelectorAll('[data-set-lang]').forEach((b) => b.addEventListener('click', () => setLang(b.dataset.setLang)));
 
 // ---------- 2. Typing effect ----------
-// Edit the phrases here. "\n" is the line break.
+// Edit the phrases here. "\n" is the line break. The hero is always in English.
 const phrases = {
   en: ['I make complex\nthings feel simple.', "I'm a product\ndesigner", 'I design for people,\nnot just screens.'],
-  es: ['Hago simple\nlo complejo.', 'Soy diseñadora\nde producto', 'Diseño para personas,\nno solo pantallas.'],
 };
 const typedEl = document.querySelector('.typed-text');
 const SPEED_TYPE = 55;    // ms per letter when writing
@@ -37,7 +36,7 @@ let typingTimer = null;
 
 function restartTyping() {
   clearTimeout(typingTimer);
-  const list = phrases[root.lang] || phrases.en;
+  const list = phrases.en; // the hero always stays in English
   if (reduceMotion) { typedEl.textContent = list[0]; return; }
   let i = 0;           // which phrase
   let n = list[0].length; // start with the first phrase already written
