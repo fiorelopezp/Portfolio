@@ -425,3 +425,10 @@ h1, h2, h3, p { margin: 0; }
 /* Icons stay invisible until their font loads (never shows the icon's name) */
 .ms { visibility: hidden; }
 .icons-ready .ms { visibility: visible; }
+
+/* ---------- Round 3 adjustments ---------- */
+img { height: auto; } /* images always keep their proportions */
+.stat.accent .ms { color: #fff; }
+.band-ds img { width: 100%; margin: 0; }
+.proto-link { font-size: 18px; }
+.proto-link .i-ext { width: 20px; height: 20px; }
