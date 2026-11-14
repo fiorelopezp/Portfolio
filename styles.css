@@ -76,21 +76,22 @@ h1, h2, h3, p { margin: 0; }
 .service { border: 1px solid var(--line); border-radius: 6px; padding: 26px 26px 32px; display: grid; align-content: start; gap: 6px; background: var(--paper); transition: transform .35s var(--ease), box-shadow .35s; }
 .service:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(21,20,16,.07); }
 .service .num { font-size: 12px; color: var(--muted); }
-.service .icon { width: 96px; height: 96px; margin: 20px 0 56px; fill: none; stroke: var(--ink); stroke-width: .8; overflow: visible; }
-.service .icon * { transform-box: fill-box; transform-origin: center; }
+.service .icon { width: 96px; height: 96px; margin: 20px 0 56px; fill: none; stroke: #4A4A50; stroke-width: .6; overflow: visible; }
+.service .icon * { transform-box: fill-box; transform-origin: center; vector-effect: non-scaling-stroke; }
 
-/* Animated icons (loop) */
-/* 001 UX: circles pulse like ripples */
-.icon-ux .c { animation: pulse 3.2s var(--ease) infinite; }
-.icon-ux .c2 { animation-delay: .18s; } .icon-ux .c3 { animation-delay: .36s; }
-.icon-ux .ripple { animation: ripple 3.2s ease-out infinite; }
-@keyframes pulse { 0%, 100% { transform: scale(1); } 35% { transform: scale(1.18); } 60% { transform: scale(.94); } }
-@keyframes ripple { 0% { transform: scale(1); opacity: .9; } 70%, 100% { transform: scale(2.3); opacity: 0; } }
+/* Animated icons (loop). Very thin dark-grey lines; non-scaling-stroke keeps them thin at any size. */
+/* 001 UX: three rings breathe at different rhythms, split apart and merge into one */
+.icon-ux .c { animation: 4.8s cubic-bezier(.65,0,.35,1) infinite; }
+.icon-ux .c1 { animation-name: ux1; } .icon-ux .c2 { animation-name: ux2; } .icon-ux .c3 { animation-name: ux3; }
+@keyframes ux1 { 0%, 100% { transform: scale(2.5); } 25% { transform: scale(1.35); } 50% { transform: scale(.75); } 72% { transform: scale(1.05); } }
+@keyframes ux2 { 0%, 100% { transform: scale(1.85); } 25% { transform: scale(1.1); } 50% { transform: scale(.55); } 72% { transform: scale(1.05); } }
+@keyframes ux3 { 0%, 100% { transform: scale(1.15); } 25% { transform: scale(.7); } 50% { transform: scale(.32); } 72% { transform: scale(1.05); } }
 
-/* 002 UI: cube turns inside the hexagon */
-.icon-ui .hex { animation: spin 14s linear infinite; }
-.icon-ui .cube { animation: cube 4.8s var(--ease) infinite; }
-@keyframes cube { 0% { transform: rotate(0) scale(1); } 40% { transform: rotate(-120deg) scale(1.12); } 50%, 100% { transform: rotate(-120deg) scale(1); } }
+/* 002 UI: a cube inside a cube, turning at different times */
+.icon-ui .outer { animation: ui-out 6s cubic-bezier(.7,0,.3,1) infinite; }
+.icon-ui .inner { animation: ui-in 6s cubic-bezier(.7,0,.3,1) infinite; }
+@keyframes ui-out { 0%, 12% { transform: rotate(0) scale(1); } 38%, 50% { transform: rotate(60deg) scale(.92); } 76%, 88% { transform: rotate(120deg) scale(1); } 100% { transform: rotate(120deg) scale(1); } }
+@keyframes ui-in { 0%, 20% { transform: rotate(0) scale(1); } 45%, 55% { transform: rotate(-120deg) scale(1.45); } 80%, 100% { transform: rotate(-240deg) scale(1); } }
 
 /* 003 Design System: blocks swap places */
 .icon-ds .b { animation: 5s var(--ease) infinite; }
@@ -102,11 +103,13 @@ h1, h2, h3, p { margin: 0; }
 @keyframes ds-b1 { 0%, 15% { transform: translateX(0); } 35%, 65% { transform: translateX(36px); } 85%, 100% { transform: translateX(0); } }
 @keyframes ds-b2 { 0%, 15% { transform: translateX(0); } 35%, 65% { transform: translateX(-22px); } 85%, 100% { transform: translateX(0); } }
 
-/* 004 Accessibility: the shape draws itself and floats */
-.icon-a11y .float { animation: float 4s ease-in-out infinite; }
-.icon-a11y .draw { stroke-dasharray: 100; animation: draw 6s var(--ease) infinite; }
-@keyframes float { 0%, 100% { transform: translateY(0) rotate(-4deg); } 50% { transform: translateY(-4px) rotate(4deg); } }
-@keyframes draw { 0% { stroke-dashoffset: 100; } 45%, 80% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: -100; } }
+/* 004 Accessibility: a 3D check mark turning on its axis */
+.icon-a11y { animation: a11y 5s cubic-bezier(.65,0,.35,1) infinite; }
+.icon-a11y .back { stroke-opacity: .55; }
+@keyframes a11y {
+  0%, 100% { transform: perspective(260px) rotateY(-28deg) rotateX(8deg) rotateZ(-6deg); }
+  50% { transform: perspective(260px) rotateY(32deg) rotateX(-6deg) rotateZ(6deg); }
+}
 .service h3 { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; }
 .service .lead { font-size: 15px; font-weight: 500; margin-bottom: 14px; }
 .service .desc { font-size: 15px; color: var(--muted); line-height: 1.6; }
