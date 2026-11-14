@@ -7,24 +7,34 @@
   <meta name="description" content="Senior Product Designer in fintech, banking and e-commerce. I make complex things feel simple.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <!-- Apply the saved language before the page paints -->
+  <script>try { var l = localStorage.getItem('lang'); if (l === 'es' || l === 'en') document.documentElement.lang = l; } catch (e) {}</script>
 </head>
 <body>
+  <!--
+    HOW TEXTS WORK
+    Every text exists twice: data-lang="en" (English) and data-lang="es" (Spanish).
+    The EN / ES buttons show one and hide the other. To edit a text, change both versions.
+  -->
 
   <!-- ===== Floating contact button (appears after scrolling) ===== -->
-  <a class="float-contact" href="mailto:fiorelopezph@gmail.com">Contact me</a>
+  <a class="float-contact" href="mailto:fiorelopezph@gmail.com"><span data-lang="en">Contact me</span><span data-lang="es">Contactame</span></a>
 
   <!-- ===== Header: hides when you scroll down, comes back when you scroll up ===== -->
   <header class="site-header" id="top">
     <nav class="wrap nav">
       <div class="nav-links">
         <a href="https://linkedin.com/in/fiorelopez" target="_blank" rel="noopener">LinkedIn <span class="ext" aria-hidden="true">↗</span></a>
-        <a href="#" target="_blank" rel="noopener">Curriculum vitae <span class="ext" aria-hidden="true">↗</span></a>
+        <a href="#" target="_blank" rel="noopener"><span data-lang="en">Curriculum vitae</span><span data-lang="es">Currículum</span> <span class="ext" aria-hidden="true">↗</span></a>
       </div>
       <div class="nav-right">
-        <span class="lang"><a href="#" aria-current="true">EN</a> <a href="#">ES</a></span>
-        <a class="btn-outline" href="mailto:fiorelopezph@gmail.com">Contact me</a>
+        <div class="lang" role="group" aria-label="Language / Idioma">
+          <button type="button" data-set-lang="en">EN</button>
+          <button type="button" data-set-lang="es">ES</button>
+        </div>
+        <a class="btn-outline" href="mailto:fiorelopezph@gmail.com"><span data-lang="en">Contact me</span><span data-lang="es">Contactame</span></a>
       </div>
     </nav>
   </header>
@@ -35,9 +45,10 @@
       <p class="eyebrow reveal">Fiorella López Piraino &nbsp;Senior Product Designer</p>
       <div class="hero-row">
         <h1 class="hero-title">
-          <span class="line"><span>Hi there!</span></span>
-          <span class="line"><span>I make complex</span></span>
-          <span class="line"><span>things feel simple.</span></span>
+          <span class="line"><span><span data-lang="en">Hi there!</span><span data-lang="es">¡Hola!</span></span></span>
+          <!-- Typing effect: the phrases are in script.js -->
+          <span class="typed" aria-live="polite"><span class="typed-text">I make complex
+things feel simple.</span><span class="caret" aria-hidden="true"></span></span>
         </h1>
         <a class="scroll-badge" href="#services" aria-label="Scroll to content">
           <svg class="ring" viewBox="0 0 120 120" aria-hidden="true">
@@ -54,51 +65,51 @@
       <article class="service reveal">
         <span class="num">001</span>
         <svg class="icon" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="12"/><circle cx="32" cy="32" r="8"/><circle cx="32" cy="32" r="4"/></svg>
-        <h3>UX Design</h3>
-        <p class="lead">Understand before designing.</p>
-        <p class="desc">I turn user needs into flows that reduce friction and guesswork, so your product just makes sense.</p>
+        <h3><span data-lang="en">UX Design</span><span data-lang="es">Diseño UX</span></h3>
+        <p class="lead"><span data-lang="en">Understand before designing.</span><span data-lang="es">Entender antes de diseñar.</span></p>
+        <p class="desc"><span data-lang="en">I turn user needs into flows that reduce friction and guesswork, so your product just makes sense.</span><span data-lang="es">Convierto las necesidades de las personas en flujos que reducen la fricción y las dudas, para que tu producto simplemente se entienda.</span></p>
       </article>
       <article class="service reveal">
         <span class="num">002</span>
         <svg class="icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M20 6 46 10 60 32 46 58 18 56 4 30Z" stroke-dasharray="2 1.5"/><path d="M32 22 44 28 44 40 32 46 20 40 20 28Z M32 22 32 34 M20 28 32 34 44 28 M32 34 32 46"/></svg>
-        <h3>UI Design</h3>
-        <p class="lead">Clarity, hierarchy, and detail.</p>
-        <p class="desc">Interfaces that look sharp and drive action, balancing usability with a personality that fits your brand.</p>
+        <h3><span data-lang="en">UI Design</span><span data-lang="es">Diseño UI</span></h3>
+        <p class="lead"><span data-lang="en">Clarity, hierarchy, and detail.</span><span data-lang="es">Claridad, jerarquía y detalle.</span></p>
+        <p class="desc"><span data-lang="en">Interfaces that look sharp and drive action, balancing usability with a personality that fits your brand.</span><span data-lang="es">Interfaces prolijas que invitan a la acción, equilibrando usabilidad con una personalidad acorde a tu marca.</span></p>
       </article>
       <article class="service reveal">
         <span class="num">003</span>
         <svg class="icon" viewBox="0 0 64 64" aria-hidden="true"><rect x="4" y="8" width="36" height="14"/><rect x="42" y="8" width="18" height="14"/><rect x="4" y="25" width="20" height="14"/><rect x="26" y="25" width="34" height="14"/><rect x="4" y="42" width="36" height="14"/><rect x="42" y="42" width="18" height="14"/></svg>
         <h3>Design System</h3>
-        <p class="lead">Consistency that scales.</p>
-        <p class="desc">Systems that let your team ship faster and stay aligned as the product grows.</p>
+        <p class="lead"><span data-lang="en">Consistency that scales.</span><span data-lang="es">Consistencia que escala.</span></p>
+        <p class="desc"><span data-lang="en">Systems that let your team ship faster and stay aligned as the product grows.</span><span data-lang="es">Sistemas que le permiten a tu equipo lanzar más rápido y mantenerse alineado a medida que el producto crece.</span></p>
       </article>
       <article class="service reveal">
         <span class="num">004</span>
         <svg class="icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M4 22 18 12 30 18 30 30 50 20 62 26 62 38 30 56 4 42Z M4 22 4 34 30 50 62 32 M30 30 30 42 M18 12 18 24 M62 26 30 44 4 30"/></svg>
-        <h3>Accessibility</h3>
-        <p class="lead">Design for everyone.</p>
-        <p class="desc">Inclusive, WCAG-compliant experiences that widen your reach, so no one gets left out.</p>
+        <h3><span data-lang="en">Accessibility</span><span data-lang="es">Accesibilidad</span></h3>
+        <p class="lead"><span data-lang="en">Design for everyone.</span><span data-lang="es">Diseño para todas las personas.</span></p>
+        <p class="desc"><span data-lang="en">Inclusive, WCAG-compliant experiences that widen your reach, so no one gets left out.</span><span data-lang="es">Experiencias inclusivas, alineadas a WCAG, que amplían tu alcance para que nadie quede afuera.</span></p>
       </article>
     </section>
 
     <!-- ===== Work ===== -->
     <section class="work wrap" id="work">
-      <h2 class="section-title reveal">Work</h2>
+      <h2 class="section-title reveal"><span data-lang="en">Work</span><span data-lang="es">Proyectos</span></h2>
       <div class="work-grid">
-        <a class="project project--wide reveal" href="#" data-cursor="View case">
+        <a class="project project--wide reveal" href="#" data-cursor-en="View case" data-cursor-es="Ver caso">
           <div class="project-media"><img src="assets/work-umarket.jpg" alt="umarket brand visual: Encontralo en umarket" width="908" height="510"></div>
           <p class="project-client">umarket · ueno bank</p>
-          <h3 class="project-title">E-commerce &amp; Design System</h3>
+          <h3 class="project-title"><span data-lang="en">E-commerce &amp; Design System</span><span data-lang="es">E-commerce y Design System</span></h3>
         </a>
-        <a class="project reveal" href="#" data-cursor="View case">
+        <a class="project reveal" href="#" data-cursor-en="View case" data-cursor-es="Ver caso">
           <div class="project-media"><img src="assets/work-itti-prop.jpg" alt="Four phones showing itti Prop loan pre-approval screens" width="913" height="912"></div>
           <p class="project-client">itti Prop</p>
-          <h3 class="project-title">Real estate &amp; mortgage loans</h3>
+          <h3 class="project-title"><span data-lang="en">Real estate &amp; mortgage loans</span><span data-lang="es">Real estate y créditos hipotecarios</span></h3>
         </a>
-        <a class="project reveal" href="#" data-cursor="View case">
+        <a class="project reveal" href="#" data-cursor-en="View case" data-cursor-es="Ver caso">
           <div class="project-media"><img src="assets/work-umarket-app.jpg" alt="Phone home screen with the umarket app icon" width="1600" height="1067"></div>
           <p class="project-client">umarket</p>
-          <h3 class="project-title">Mobile app</h3>
+          <h3 class="project-title"><span data-lang="en">Mobile app</span><span data-lang="es">App mobile</span></h3>
         </a>
       </div>
     </section>
@@ -106,16 +117,35 @@
     <!-- ===== About ===== -->
     <section class="about" id="about">
       <div class="wrap about-grid">
-        <h2 class="section-title reveal">About me</h2>
-        <ul class="about-path reveal">
-          <li>Graphic Designer</li>
-          <li>Shifted to UX focused on Accessibility &amp; Usability</li>
-          <li>University professor</li>
-          <li>Senior Product Designer in Fintech &amp; Banking</li>
-        </ul>
+        <h2 class="section-title reveal"><span data-lang="en">About me</span><span data-lang="es">Sobre mí</span></h2>
+
+        <!-- Moving list: the visible track is duplicated so the loop is seamless -->
+        <div class="reel reveal">
+          <ul class="sr-only" data-lang="en">
+            <li>Graphic Designer</li><li>Shifted to UX focused on Accessibility &amp; Usability</li><li>University professor</li><li>Senior Product Designer in Fintech &amp; Banking</li>
+          </ul>
+          <ul class="sr-only" data-lang="es">
+            <li>Diseñadora gráfica</li><li>Me pasé a UX con foco en accesibilidad y usabilidad</li><li>Docente universitaria</li><li>Senior Product Designer en fintech y banca</li>
+          </ul>
+          <ul class="reel-track" aria-hidden="true" data-lang="en">
+            <li>Graphic Designer</li><li>Shifted to UX focused on Accessibility &amp; Usability</li><li>University professor</li><li>Senior Product Designer in Fintech &amp; Banking</li>
+            <li>Graphic Designer</li><li>Shifted to UX focused on Accessibility &amp; Usability</li><li>University professor</li><li>Senior Product Designer in Fintech &amp; Banking</li>
+          </ul>
+          <ul class="reel-track" aria-hidden="true" data-lang="es">
+            <li>Diseñadora gráfica</li><li>Me pasé a UX con foco en accesibilidad y usabilidad</li><li>Docente universitaria</li><li>Senior Product Designer en fintech y banca</li>
+            <li>Diseñadora gráfica</li><li>Me pasé a UX con foco en accesibilidad y usabilidad</li><li>Docente universitaria</li><li>Senior Product Designer en fintech y banca</li>
+          </ul>
+        </div>
+
         <div class="about-text reveal">
-          <p>I'm a Senior Product Designer with 5+ years of experience in UX/UI and digital product across banking, fintech, e-commerce and real estate. I started as a graphic designer, moved into UX with a focus on accessibility and usability, and today I lead end-to-end projects, from product discovery to implementation.</p>
-          <p>I work side by side with product, engineering and business teams, mentor designers, and teach UX and portfolio design at the University of Buenos Aires and Universidad de San Andrés.</p>
+          <div data-lang="en">
+            <p>I'm a Senior Product Designer with 5+ years of experience in UX/UI and digital product across banking, fintech, e-commerce and real estate. I started as a graphic designer, moved into UX with a focus on accessibility and usability, and today I lead end-to-end projects, from product discovery to implementation.</p>
+            <p>I work side by side with product, engineering and business teams, mentor designers, and teach UX and portfolio design at the University of Buenos Aires and Universidad de San Andrés.</p>
+          </div>
+          <div data-lang="es">
+            <p>Soy Senior Product Designer con más de 5 años de experiencia en UX/UI y producto digital en banca, fintech, e-commerce y real estate. Empecé como diseñadora gráfica, me pasé a UX con foco en accesibilidad y usabilidad, y hoy lidero proyectos end-to-end, de product discovery a implementación.</p>
+            <p>Trabajo codo a codo con equipos de producto, ingeniería y negocio, mentoreo diseñadores y doy clases de UX y de diseño de portfolio en la Universidad de Buenos Aires y la Universidad de San Andrés.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -123,96 +153,144 @@
     <!-- ===== Experience ===== -->
     <section class="experience" id="experience">
       <div class="wrap">
-        <h2 class="section-title reveal">Experience</h2>
+        <h2 class="section-title reveal"><span data-lang="en">Experience</span><span data-lang="es">Experiencia</span></h2>
         <div class="accordion reveal">
 
           <details class="job" open>
-            <summary><span class="job-num">01</span><span class="job-co"><b>itti</b> - umarket</span><span class="job-role">Sr. Product Designer</span><span class="job-date">Aug 2025 - Present</span><span class="job-toggle" aria-hidden="true"></span></summary>
+            <summary><span class="job-num">01</span><span class="job-co"><b>itti</b> - umarket</span><span class="job-role">Sr. Product Designer</span><span class="job-date"><span data-lang="en">Aug 2025 - Present</span><span data-lang="es">Ago 2025 - Actualidad</span></span><span class="job-toggle" aria-hidden="true"></span></summary>
             <div class="job-body"><div class="job-inner">
-              <p>Sr. Product Designer focused on the strategic evolution of the e-commerce ecosystem.</p>
-              <ul>
-                <li>Contribute to the end-to-end development of an e-commerce platform alongside product and engineering teams, from discovery to implementation.</li>
-                <li>Define and evolve shopping, checkout, payments, and financing experiences within the digital ecosystem.</li>
-                <li>Develop and maintain a Design System to ensure scalability, consistency, and efficiency across products and teams.</li>
-                <li>Collaborate cross-functionally with business, data, and engineering teams to define priorities, identify opportunities, and drive product improvements.</li>
-                <li>Participate in research, prototyping, and validation processes to optimize user experience, conversion, and usability.</li>
-                <li>Contribute to product decisions with a focus on strategic vision, user experience, and business alignment.</li>
+              <div data-lang="en">
+                <p>Sr. Product Designer focused on the strategic evolution of the e-commerce ecosystem.</p>
+                <ul>
+                  <li>Contribute to the end-to-end development of an e-commerce platform alongside product and engineering teams, from discovery to implementation.</li>
+                  <li>Define and evolve shopping, checkout, payments, and financing experiences within the digital ecosystem.</li>
+                  <li>Develop and maintain a Design System to ensure scalability, consistency, and efficiency across products and teams.</li>
+                  <li>Collaborate cross-functionally with business, data, and engineering teams to define priorities, identify opportunities, and drive product improvements.</li>
+                  <li>Participate in research, prototyping, and validation processes to optimize user experience, conversion, and usability.</li>
+                  <li>Contribute to product decisions with a focus on strategic vision, user experience, and business alignment.</li>
+                </ul>
+              </div>
+              <div data-lang="es">
+                <p>Sr. Product Designer enfocada en la evolución estratégica del ecosistema de e-commerce.</p>
+                <ul>
+                  <li>Participo en el desarrollo end-to-end de una plataforma de e-commerce junto a los equipos de producto e ingeniería, de discovery a implementación.</li>
+                  <li>Defino y evoluciono las experiencias de compra, checkout, pagos y financiación dentro del ecosistema digital.</li>
+                  <li>Desarrollo y mantengo un Design System para asegurar escalabilidad, consistencia y eficiencia entre productos y equipos.</li>
+                  <li>Colaboro con negocio, data e ingeniería para definir prioridades, detectar oportunidades e impulsar mejoras de producto.</li>
+                  <li>Participo en procesos de research, prototipado y validación para optimizar la experiencia, la conversión y la usabilidad.</li>
+                  <li>Aporto a las decisiones de producto con foco en visión estratégica, experiencia de usuario y alineación con el negocio.</li>
+                </ul>
+              </div>
+            </div></div>
+          </details>
+
+          <details class="job">
+            <summary><span class="job-num">02</span><span class="job-co"><b>itti</b> - ueno bank credits</span><span class="job-role">Sr. Product Designer</span><span class="job-date"><span data-lang="en">Jan 2025 - Aug 2025</span><span data-lang="es">Ene 2025 - Ago 2025</span></span><span class="job-toggle" aria-hidden="true"></span></summary>
+            <div class="job-body"><div class="job-inner">
+              <ul data-lang="en">
+                <li>Designed the loans section of the app and the end-to-end application, management and payment flows.</li>
+                <li>Validated solutions through user testing and supported the handoff to development.</li>
+              </ul>
+              <ul data-lang="es">
+                <li>Diseñé la sección de préstamos de la app y los flujos end-to-end de solicitud, gestión y pago.</li>
+                <li>Validé las soluciones con testeos de usuarios y acompañé el handoff a desarrollo.</li>
               </ul>
             </div></div>
           </details>
 
           <details class="job">
-            <summary><span class="job-num">02</span><span class="job-co"><b>itti</b> - ueno bank credits</span><span class="job-role">Sr. Product Designer</span><span class="job-date">Jan 2025 - Aug 2025</span><span class="job-toggle" aria-hidden="true"></span></summary>
-            <div class="job-body"><div class="job-inner"><ul>
-              <li>Designed the loans section of the app and the end-to-end application, management and payment flows.</li>
-              <li>Validated solutions through user testing and supported the handoff to development.</li>
-            </ul></div></div>
+            <summary><span class="job-num">03</span><span class="job-co"><b>itti</b> - itti Prop</span><span class="job-role">Sr. Product Designer</span><span class="job-date"><span data-lang="en">Apr 2024 - Mar 2025</span><span data-lang="es">Abr 2024 - Mar 2025</span></span><span class="job-toggle" aria-hidden="true"></span></summary>
+            <div class="job-body"><div class="job-inner">
+              <ul data-lang="en">
+                <li>Designed from scratch a platform connecting real estate listings with financial services; led strategy, research and testing.</li>
+                <li>Reduced usability issues from 11 to 5 between testing rounds; in its first month, 45 loans were approved, three times the bank's monthly average.</li>
+              </ul>
+              <ul data-lang="es">
+                <li>Diseñé desde cero una plataforma que une oferta inmobiliaria y servicios financieros; lideré estrategia, research y testeo.</li>
+                <li>Reduje los problemas de usabilidad de 11 a 5 entre rondas de testeo; en su primer mes se aprobaron 45 préstamos, el triple del promedio mensual del banco.</li>
+              </ul>
+            </div></div>
           </details>
 
           <details class="job">
-            <summary><span class="job-num">03</span><span class="job-co"><b>itti</b> - itti Prop</span><span class="job-role">Sr. Product Designer</span><span class="job-date">Apr 2024 - Mar 2025</span><span class="job-toggle" aria-hidden="true"></span></summary>
-            <div class="job-body"><div class="job-inner"><ul>
-              <li>Designed from scratch a platform connecting real estate listings with financial services; led strategy, research and testing.</li>
-              <li>Reduced usability issues from 11 to 5 between testing rounds; in its first month, 45 loans were approved, three times the bank's monthly average.</li>
-            </ul></div></div>
+            <summary><span class="job-num">04</span><span class="job-co"><b>Navent</b></span><span class="job-role">Product Designer</span><span class="job-date"><span data-lang="en">Apr 2022 - Apr 2024</span><span data-lang="es">Abr 2022 - Abr 2024</span></span><span class="job-toggle" aria-hidden="true"></span></summary>
+            <div class="job-body"><div class="job-inner">
+              <ul data-lang="en">
+                <li>Apps &amp; Seekers: UX/UI for Android, iOS and web apps of LATAM real estate portals; user research, design systems and accessibility.</li>
+                <li>Financial Services: financial interfaces (rental guarantees, mortgage loans) compliant with local regulations; regional design system and usability testing.</li>
+              </ul>
+              <ul data-lang="es">
+                <li>Apps &amp; Seekers: UX/UI de apps Android, iOS y web de portales inmobiliarios de LATAM; user research, design systems y accesibilidad.</li>
+                <li>Financial Services: interfaces financieras (garantías de alquiler, créditos hipotecarios) según regulaciones locales; design system regional y usability testing.</li>
+              </ul>
+            </div></div>
           </details>
 
           <details class="job">
-            <summary><span class="job-num">04</span><span class="job-co"><b>Navent</b></span><span class="job-role">Product Designer</span><span class="job-date">Apr 2022 - Apr 2024</span><span class="job-toggle" aria-hidden="true"></span></summary>
-            <div class="job-body"><div class="job-inner"><ul>
-              <li>Apps &amp; Seekers: UX/UI for Android, iOS and web apps of LATAM real estate portals; user research, design systems and accessibility.</li>
-              <li>Financial Services: financial interfaces (rental guarantees, mortgage loans) compliant with local regulations; regional design system and usability testing.</li>
-            </ul></div></div>
+            <summary><span class="job-num">05</span><span class="job-co"><b>451°</b></span><span class="job-role">Sr. UX/UI Designer</span><span class="job-date"><span data-lang="en">Feb 2021 - Mar 2022</span><span data-lang="es">Feb 2021 - Mar 2022</span></span><span class="job-toggle" aria-hidden="true"></span></summary>
+            <div class="job-body"><div class="job-inner">
+              <ul data-lang="en"><li>UX/UI flows and prototypes for Visa International within Visa's Design System; presentations to stakeholders.</li></ul>
+              <ul data-lang="es"><li>Flujos UX/UI y prototipos para Visa Internacional bajo el Design System de Visa; presentaciones a stakeholders.</li></ul>
+            </div></div>
           </details>
 
           <details class="job">
-            <summary><span class="job-num">05</span><span class="job-co"><b>451°</b></span><span class="job-role">Sr. UX/UI Designer</span><span class="job-date">Feb 2021 - Mar 2022</span><span class="job-toggle" aria-hidden="true"></span></summary>
-            <div class="job-body"><div class="job-inner"><ul>
-              <li>UX/UI flows and prototypes for Visa International within Visa's Design System; presentations to stakeholders.</li>
-            </ul></div></div>
+            <summary><span class="job-num">06</span><span class="job-co"><b><span data-lang="en">University of Buenos Aires</span><span data-lang="es">Universidad de Buenos Aires</span></b></span><span class="job-role"><span data-lang="en">User Experience Design Professor</span><span data-lang="es">Docente de Diseño de Experiencia de Usuario</span></span><span class="job-date"><span data-lang="en">Jul 2023 - Present</span><span data-lang="es">Jul 2023 - Actualidad</span></span><span class="job-toggle" aria-hidden="true"></span></summary>
+            <div class="job-body"><div class="job-inner">
+              <ul data-lang="en"><li>Elective course for Graphic Design, Industrial Design and Image &amp; Sound: human-centered methods and research (Cátedra Valdez / UX Labs).</li></ul>
+              <ul data-lang="es"><li>Materia optativa para Diseño Gráfico, Industrial e Imagen y Sonido: metodologías centradas en personas y research (Cátedra Valdez / UX Labs).</li></ul>
+            </div></div>
           </details>
 
           <details class="job">
-            <summary><span class="job-num">06</span><span class="job-co"><b>University of Buenos Aires</b></span><span class="job-role">User Experience Design Professor</span><span class="job-date">Jul 2023 - Present</span><span class="job-toggle" aria-hidden="true"></span></summary>
-            <div class="job-body"><div class="job-inner"><ul>
-              <li>Elective course for Graphic Design, Industrial Design and Image &amp; Sound: human-centered methods and research (Cátedra Valdez / UX Labs).</li>
-            </ul></div></div>
-          </details>
-
-          <details class="job">
-            <summary><span class="job-num">07</span><span class="job-co"><b>UdeSA</b></span><span class="job-role">Portfolio Design Professor</span><span class="job-date">Mar 2026 - Present</span><span class="job-toggle" aria-hidden="true"></span></summary>
-            <div class="job-body"><div class="job-inner"><ul>
-              <li>Guiding advanced Design students through portfolios, case studies and defending their design decisions.</li>
-            </ul></div></div>
+            <summary><span class="job-num">07</span><span class="job-co"><b>UdeSA</b></span><span class="job-role"><span data-lang="en">Portfolio Design Professor</span><span data-lang="es">Docente de Diseño de Portfolio</span></span><span class="job-date"><span data-lang="en">Mar 2026 - Present</span><span data-lang="es">Mar 2026 - Actualidad</span></span><span class="job-toggle" aria-hidden="true"></span></summary>
+            <div class="job-body"><div class="job-inner">
+              <ul data-lang="en"><li>Guiding advanced Design students through portfolios, case studies and defending their design decisions.</li></ul>
+              <ul data-lang="es"><li>Acompaño a estudiantes avanzados de Diseño en sus portfolios, casos de estudio y la defensa de sus decisiones de diseño.</li></ul>
+            </div></div>
           </details>
 
         </div>
 
         <div class="edu-skills">
           <div class="reveal">
-            <h3 class="small-title">Education</h3>
-            <dl class="table">
-              <div><dt>Posgrado</dt><dd>Diplomatura Accesibilidad y usabilidad web - UTN</dd></div>
-              <div><dt>Universitario</dt><dd>Graphic Designer FADU - UBA</dd></div>
-              <div><dt>Capacitación</dt><dd>UX Avanzado Onboarding - Somos Edison</dd></div>
-              <div><dt>Curso de idiomas</dt><dd>Inglés Advanced 2 - Icana</dd></div>
+            <h3 class="small-title"><span data-lang="en">Education</span><span data-lang="es">Educación</span></h3>
+            <dl class="table" data-lang="en">
+              <div><dt>Postgraduate</dt><dd>Diploma in Web Accessibility &amp; Usability - UTN</dd></div>
+              <div><dt>University</dt><dd>Graphic Designer, FADU - UBA</dd></div>
+              <div><dt>Training</dt><dd>Advanced UX: Onboarding - Somos Edison</dd></div>
+              <div><dt>Languages</dt><dd>English Advanced 2 - Icana</dd></div>
+              <div><dt>High school</dt><dd>Escuela Superior de Comercio Carlos Pellegrini</dd></div>
+            </dl>
+            <dl class="table" data-lang="es">
+              <div><dt>Posgrado</dt><dd>Diplomatura en Accesibilidad y Usabilidad Web - UTN</dd></div>
+              <div><dt>Universitario</dt><dd>Diseñadora Gráfica, FADU - UBA</dd></div>
+              <div><dt>Capacitación</dt><dd>UX Avanzado: Onboarding - Somos Edison</dd></div>
+              <div><dt>Idiomas</dt><dd>Inglés Advanced 2 - Icana</dd></div>
               <div><dt>Secundario</dt><dd>Escuela Superior de Comercio Carlos Pellegrini</dd></div>
             </dl>
           </div>
           <div class="reveal">
-            <h3 class="small-title">Skills</h3>
-            <ul class="table skills">
+            <h3 class="small-title"><span data-lang="en">Skills</span><span data-lang="es">Habilidades</span></h3>
+            <ul class="table skills" data-lang="en">
               <li>Product Thinking &amp; data-informed Design</li>
               <li>Accessibility</li>
               <li>Stakeholder Management</li>
               <li>Figma Advanced</li>
               <li>End-to-End Product Design &amp; Project Management</li>
             </ul>
+            <ul class="table skills" data-lang="es">
+              <li>Product thinking y diseño data-informed</li>
+              <li>Accesibilidad</li>
+              <li>Gestión de stakeholders</li>
+              <li>Figma avanzado</li>
+              <li>Diseño de producto end-to-end y gestión de proyectos</li>
+            </ul>
           </div>
         </div>
       </div>
 
-      <!-- ===== Marquee: outlined words moving sideways ===== -->
+      <!-- ===== Marquee: outlined words moving sideways (same terms in both languages) ===== -->
       <div class="marquee" aria-hidden="true">
         <div class="marquee-row"><div class="marquee-track"><span>UX/UI</span><i></i><span>Senior Product Designer</span><i></i><span>UX/UI</span><i></i><span>Senior Product Designer</span><i></i></div></div>
         <div class="marquee-row reverse"><div class="marquee-track"><span>Product thinking</span><i></i><span>Data-informed Design</span><i></i><span>Product thinking</span><i></i><span>Data-informed Design</span><i></i></div></div>
@@ -225,11 +303,11 @@
   <!-- ===== Footer ===== -->
   <footer class="footer" id="contact">
     <div class="wrap">
-      <h2 class="reveal">Let’s work together!</h2>
-      <a class="btn-white reveal" href="mailto:fiorelopezph@gmail.com">Contact me <span aria-hidden="true">↗</span></a>
+      <h2 class="reveal"><span data-lang="en">Let’s work together!</span><span data-lang="es">¡Trabajemos juntos!</span></h2>
+      <a class="btn-white reveal" href="mailto:fiorelopezph@gmail.com"><span data-lang="en">Contact me</span><span data-lang="es">Contactame</span> <span aria-hidden="true">↗</span></a>
       <div class="footer-links">
         <a href="https://linkedin.com/in/fiorelopez" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a>
-        <a href="#" target="_blank" rel="noopener">Curriculum vitae <span aria-hidden="true">↗</span></a>
+        <a href="#" target="_blank" rel="noopener"><span data-lang="en">Curriculum vitae</span><span data-lang="es">Currículum</span> <span aria-hidden="true">↗</span></a>
       </div>
     </div>
   </footer>
