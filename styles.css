@@ -389,3 +389,39 @@ h1, h2, h3, p { margin: 0; }
   .case-figure.flow { overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .case-figure.flow img { width: 900px; max-width: none; }
 }
+
+/* ---------- Round 2 adjustments (case study) ---------- */
+/* Pills: soft grey hover (not clickable) */
+.tags li { cursor: default; transition: background .25s, border-color .25s; }
+.tags li:hover { background: #EDEDF0; }
+/* Research cards closer to the Figma */
+.stat { padding: 18px 16px; min-height: 0; gap: 8px; }
+.stat .ms, .stat .ms-svg { color: var(--ink); }
+.stat .ms { font-size: 24px; }
+.stat strong { font-size: clamp(24px, 2vw, 30px); margin-top: 10px; }
+.stat p { font-size: 12px !important; }
+.stat.note p { font-size: 12px !important; line-height: 1.5 !important; margin-top: 10px; }
+.stat.accent strong { font-size: clamp(32px, 3vw, 44px); }
+.g-bottom { grid-template-columns: 1.5fr 1fr; gap: 20px; }
+.g-bottom > div { display: flex; flex-direction: column; }
+.g-bottom .stats { flex: 1; }
+.g-canales { grid-template-columns: 2.6fr 1fr 1fr 1fr; }
+.g-cat { grid-template-columns: 1fr 1fr 1.45fr; }
+.pie-card { gap: 20px; padding: 0; }
+.pie { width: 120px; height: 120px; }
+.pie-legend strong { font-size: 24px; }
+.pie-legend .ms { font-size: 20px; }
+/* Numbers that count up keep their width steady */
+.count { font-variant-numeric: tabular-nums; }
+/* Figma prototype: text link like the header links */
+.proto-link { background: none; border-radius: 0; padding: 0; margin: 40px 0 clamp(80px, 9vw, 130px); gap: 8px; font-size: 20px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; transition: opacity .2s; }
+.proto-link:hover { background: none; opacity: .6; }
+.proto-link .i-ext { width: 24px; height: 24px; margin: 0; vertical-align: middle; }
+@media (max-width: 760px) {
+  .g-canales { grid-template-columns: 1fr 1fr 1fr; }
+  .g-cat { grid-template-columns: 1fr 1fr; }
+  .proto-link { font-size: 16px; }
+}
+/* Icons stay invisible until their font loads (never shows the icon's name) */
+.ms { visibility: hidden; }
+.icons-ready .ms { visibility: visible; }

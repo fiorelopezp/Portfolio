@@ -128,3 +128,40 @@ if (video && 'IntersectionObserver' in window) {
     entries.forEach((e) => { if (e.isIntersecting) play(); else video.pause(); });
   }, { threshold: 0.5 }).observe(video);
 }
+
+// ---------- 8. Numbers that count up when they reach the screen ----------
+// Any <strong class="count"> like "+8000", "55%", "U$D 635k" or "+18.5k":
+// the number grows from 0 to its value; the symbols around it stay fixed.
+const counters = document.querySelectorAll('.count');
+if (counters.length && 'IntersectionObserver' in window && !reduceMotion) {
+  const DURATION = 1800; // ms
+  const easeOut = (t) => 1 - Math.pow(1 - t, 3);
+  const run = (el) => {
+    const m = el.dataset.final.match(/^(\D*)([\d.,]+)(.*)$/);
+    if (!m) return;
+    const [, before, num, after] = m;
+    const target = parseFloat(num.replace(',', '.'));
+    const decimals = (num.split(/[.,]/)[1] || '').length;
+    const start = performance.now();
+    const step = (now) => {
+      const t = Math.min((now - start) / DURATION, 1);
+      el.textContent = before + (target * easeOut(t)).toFixed(decimals) + after;
+      if (t < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  };
+  const co = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) { run(e.target); co.unobserve(e.target); } });
+  }, { threshold: 0.6 });
+  counters.forEach((el) => {
+    el.dataset.final = el.textContent.trim();
+    // Start at 0 (keeping the symbols) so the number is never seen before it counts
+    el.textContent = el.dataset.final.replace(/[\d.,]+/, (n) => (0).toFixed((n.split(/[.,]/)[1] || '').length));
+    co.observe(el);
+  });
+}
+
+// ---------- 9. Icons (Google Material Symbols) appear once their font has loaded ----------
+if (document.querySelector('.ms') && document.fonts) {
+  document.fonts.load('24px "Material Symbols Outlined"').then(() => root.classList.add('icons-ready')).catch(() => {});
+}
