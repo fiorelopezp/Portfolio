@@ -701,3 +701,35 @@ img { height: auto; } /* images always keep their proportions */
 /* itti Prop: gradient band as divider between Design System and 04 */
 .page-itti > main > .it-topline, main .it-topline { position: static; display: block; height: 14px; background: linear-gradient(90deg, #6ED696, #5CBEB6); }
 main .it-topline + .it-sec { margin-top: 0; }
+
+/* ---------- v13 ---------- */
+/* itti Prop intro: text aligned to the top of the photo, photo a bit smaller (as in the PDF) */
+.it-intro-grid { grid-template-columns: 1.1fr 0.9fr; align-items: start; }
+@media (max-width: 760px) { .it-intro-grid { grid-template-columns: 1fr; } }
+
+/* ---------- v14 ---------- */
+/* Experience accordion: soft grey wash from the top instead of the black fill; text darkens instead of turning white */
+.job summary::before { background: #E9E9EC; }
+.job summary:hover > *, .job summary:focus-visible > * { color: var(--ink-2); }
+.job summary:hover .job-num, .job summary:focus-visible .job-num,
+.job summary:hover .job-co, .job summary:focus-visible .job-co { color: var(--ink-2); }
+.job summary:hover .job-co b, .job summary:focus-visible .job-co b,
+.job summary:hover .job-role, .job summary:focus-visible .job-role { color: var(--ink); }
+.job summary:hover .job-toggle::before, .job summary:hover .job-toggle::after,
+.job summary:focus-visible .job-toggle::before, .job summary:focus-visible .job-toggle::after { background: var(--ink); }
+
+/* ---------- v15 ---------- */
+/* itti Prop: main reading text matched to the PDF (24px, ink color) and kept consistent
+   across "Sobre el proyecto", the intro, the callout and the Design System paragraph */
+.page-itti .case-about .lead,
+.page-itti .it-intro-grid p,
+.page-itti .it-ds-text p { font-size: clamp(18px, 1.6vw, 24px); line-height: 1.65; color: var(--ink); }
+.page-itti .it-intro-grid p + p { margin-top: 0; }
+.page-itti .it-intro-grid p:nth-of-type(n+3) { margin-top: 1.65em; }   /* one blank line between paragraphs (EN/ES copies alternate in the markup) */
+.page-itti .it-ds-text p { max-width: 1280px; }
+.page-itti .it-intro .case-h2 { max-width: 1120px; }
+.page-itti .it-callout { margin-top: clamp(56px, 6.9vw, 104px); padding: 6px 22px; line-height: 1.4; border-width: 1px; font-size: clamp(16px, 1.6vw, 24px) !important; }
+@media (min-width: 761px) {
+  .page-itti .case-about { grid-template-columns: 860fr 406fr; gap: clamp(32px, 5.7vw, 86px); }
+  .page-itti .it-intro-grid { grid-template-columns: 673fr 623fr; gap: clamp(32px, 3.7vw, 56px); margin-top: clamp(32px, 3.7vw, 56px); }
+}
