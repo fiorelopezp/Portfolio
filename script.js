@@ -96,7 +96,7 @@ if (cursor && window.matchMedia('(pointer: fine)').matches) {
     requestAnimationFrame(loop);
   };
   loop();
-  document.querySelectorAll('.project').forEach((el) => {
+  document.querySelectorAll('.project[href]').forEach((el) => {
     el.addEventListener('mouseenter', () => {
       label.textContent = el.dataset['cursor' + (root.lang === 'es' ? 'Es' : 'En')];
       cursor.classList.add('is-active');
@@ -104,7 +104,7 @@ if (cursor && window.matchMedia('(pointer: fine)').matches) {
     el.addEventListener('mouseleave', () => cursor.classList.remove('is-active'));
   });
 } else {
-  document.querySelectorAll('.project').forEach((p) => (p.style.cursor = 'pointer'));
+  document.querySelectorAll('.project[href]').forEach((p) => (p.style.cursor = 'pointer'));
 }
 
 // ---------- 7. Case study video: plays when it reaches the screen ----------
