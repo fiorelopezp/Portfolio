@@ -718,18 +718,9 @@ main .it-topline + .it-sec { margin-top: 0; }
 .job summary:hover .job-toggle::before, .job summary:hover .job-toggle::after,
 .job summary:focus-visible .job-toggle::before, .job summary:focus-visible .job-toggle::after { background: var(--ink); }
 
-/* ---------- v15 ---------- */
-/* itti Prop: main reading text matched to the PDF (24px, ink color) and kept consistent
-   across "Sobre el proyecto", the intro, the callout and the Design System paragraph */
-.page-itti .case-about .lead,
-.page-itti .it-intro-grid p,
-.page-itti .it-ds-text p { font-size: clamp(18px, 1.6vw, 24px); line-height: 1.65; color: var(--ink); }
-.page-itti .it-intro-grid p + p { margin-top: 0; }
-.page-itti .it-intro-grid p:nth-of-type(n+3) { margin-top: 1.65em; }   /* one blank line between paragraphs (EN/ES copies alternate in the markup) */
-.page-itti .it-ds-text p { max-width: 1280px; }
-.page-itti .it-intro .case-h2 { max-width: 1120px; }
-.page-itti .it-callout { margin-top: clamp(56px, 6.9vw, 104px); padding: 6px 22px; line-height: 1.4; border-width: 1px; font-size: clamp(16px, 1.6vw, 24px) !important; }
-@media (min-width: 761px) {
-  .page-itti .case-about { grid-template-columns: 860fr 406fr; gap: clamp(32px, 5.7vw, 86px); }
-  .page-itti .it-intro-grid { grid-template-columns: 673fr 623fr; gap: clamp(32px, 3.7vw, 56px); margin-top: clamp(32px, 3.7vw, 56px); }
-}
+
+/* ---------- v16 ---------- */
+/* itti Prop intro: first paragraph starts at the top of the photo (EN/ES copies alternate in the markup,
+   so the "p + p" spacing was also pushing down the first visible paragraph) */
+.it-intro-grid p + p { margin-top: 0; }
+.it-intro-grid p:nth-of-type(n+3) { margin-top: 20px; }
