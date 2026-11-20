@@ -166,3 +166,12 @@ if (counters.length && 'IntersectionObserver' in window && !reduceMotion) {
 if (document.querySelector('.ms') && document.fonts) {
   document.fonts.load('24px "Material Symbols Outlined"').then(() => root.classList.add('icons-ready')).catch(() => {});
 }
+
+// ---------- 10. Header height as a CSS variable (the home hero fills the rest of the screen) ----------
+(() => {
+  const header = document.querySelector('.site-header');
+  if (!header) return;
+  const setH = () => document.documentElement.style.setProperty('--hh', header.offsetHeight + 'px');
+  setH();
+  window.addEventListener('resize', setH);
+})();

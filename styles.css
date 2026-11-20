@@ -806,3 +806,13 @@ main .it-topline + .it-sec { margin-top: 0; }
   .proto-link { font-size: 14px; }
   .proto-link .i-ext { width: 16px; height: 16px; }
 }
+
+/* ---------- v19 · hero fills the screen ---------- */
+/* Header + hero = 100% of the viewport; only the top edge of the 4 service boxes peeks in desktop.
+   --hh (header height) is set by script.js. Fixed height also stops the typing effect from moving the boxes. */
+.hero { box-sizing: border-box; height: calc(100vh - var(--hh, 88px) - 24px); height: calc(100svh - var(--hh, 88px) - 24px); min-height: 460px;
+        display: flex; flex-direction: column; justify-content: center; padding-top: 24px; padding-bottom: 24px; }
+@media (max-width: 760px) {
+  .hero { height: calc(100vh - var(--hh, 72px)); height: calc(100svh - var(--hh, 72px)); min-height: 520px; justify-content: flex-start; padding-top: 40px; padding-bottom: 32px; }
+  .hero-row { flex: 1; justify-content: space-between; }
+}
