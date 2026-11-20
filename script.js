@@ -182,3 +182,14 @@ setTimeout(() => {
     if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('is-in');
   });
 }, 700);
+
+// ---------- 12. Mobile menu (hamburger): LinkedIn + CV ----------
+(() => {
+  const btn = document.querySelector('.nav-burger'), menu = document.getElementById('nav-links');
+  if (!btn || !menu) return;
+  const set = (open) => { btn.setAttribute('aria-expanded', open); menu.classList.toggle('is-open', open); };
+  btn.addEventListener('click', () => set(btn.getAttribute('aria-expanded') !== 'true'));
+  menu.addEventListener('click', (e) => { if (e.target.closest('a')) set(false); });
+  document.addEventListener('click', (e) => { if (!e.target.closest('.nav')) set(false); });
+  window.addEventListener('scroll', () => set(false), { passive: true });
+})();

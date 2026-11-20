@@ -19,7 +19,8 @@
   <!-- ===== Header: hides when you scroll down, comes back when you scroll up ===== -->
   <header class="site-header" id="top">
     <nav class="wrap nav">
-      <div class="nav-links">
+      <button type="button" class="nav-burger" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span><span></span></button>
+      <div class="nav-links" id="nav-links">
         <a class="nav-home" href="index.html">← <span data-lang="en">Home</span><span data-lang="es">Inicio</span></a>
         <a href="https://linkedin.com/in/fiorelopez" target="_blank" rel="noopener">LinkedIn <svg class="i-ext" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 21q-.825 0-1.413-.588T3 19V5q0-.825.588-1.413T5 3h7v2H5v14h14v-7h2v7q0 .825-.588 1.413T19 21H5Zm4.7-5.3-1.4-1.4L17.6 5H14V3h7v7h-2V6.4l-9.3 9.3Z"/></svg></a>
         <a href="cv.html" target="_blank" rel="noopener"><span data-lang="en">Curriculum vitae</span><span data-lang="es">Currículum</span> <svg class="i-ext" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 21q-.825 0-1.413-.588T3 19V5q0-.825.588-1.413T5 3h7v2H5v14h14v-7h2v7q0 .825-.588 1.413T19 21H5Zm4.7-5.3-1.4-1.4L17.6 5H14V3h7v7h-2V6.4l-9.3 9.3Z"/></svg></a>
@@ -45,7 +46,7 @@
     <section class="wrap case-about">
       <div>
         <h2 class="case-h2 reveal"><span data-lang="en">About the project</span><span data-lang="es">Sobre el proyecto</span></h2>
-        <p class="lead reveal" data-lang="en">Design of a real estate platform exclusive to ueno bank customers (Paraguay). It lets people <b>get pre-approved instantly</b> for a mortgage loan, search for a home based on the monthly payment they can afford and compare the financing options available for each property.</p class="lead reveal"><p class="lead reveal" data-lang="es">Diseño de una plataforma inmobiliaria exclusiva para clientes de ueno bank (Paraguay). Permite <b>pre-aprobarse al instante</b> para un crédito hipotecario, buscar una vivienda a partir de la cuota que la persona puede pagar por mes y comparar las opciones de financiación disponibles para cada propiedad.</p class="lead reveal">
+        <p class="lead reveal" data-lang="en">Design of a real estate platform exclusive to ueno bank customers. It lets people <b>get pre-approved instantly</b> for a mortgage loan, search for a home based on the monthly payment they can afford and compare the financing options available for each property.</p class="lead reveal"><p class="lead reveal" data-lang="es">Diseño de una plataforma inmobiliaria exclusiva para clientes de ueno bank. Permite <b>pre-aprobarse al instante</b> para un crédito hipotecario, buscar una vivienda a partir de la cuota que la persona puede pagar por mes y comparar las opciones de financiación disponibles para cada propiedad.</p class="lead reveal">
         <ul class="tags reveal"><li>Product Design</li><li>UX Research</li><li>Information Architecture</li><li>Design System</li><li>Prototyping</li><li>Behavioural Design</li></ul>
       </div>
       <dl class="case-meta">
@@ -360,6 +361,22 @@
       </div>
     </section>
 
+
+    <!-- Other cases -->
+    <section class="wrap nc">
+      <p class="nc-k reveal"><span data-lang="en">More cases</span><span data-lang="es">Más casos</span></p>
+      <div class="nc-grid">
+        <a class="nc-big reveal" href="uenoprestamos.html">
+          <span class="nc-k"><span data-lang="en">Next case</span><span data-lang="es">Siguiente caso</span></span>
+          <span class="nc-body"><span class="nc-client">ueno bank</span><span class="nc-title"><span data-lang="en">Loans home for a banking app</span><span data-lang="es">Home de préstamos para app bancaria</span> <span class="nc-ar" aria-hidden="true">→</span></span></span>
+        </a>
+        <a class="nc-small reveal" href="umarket.html">
+          <span class="nc-media"><img src="assets/work-umarket.jpg" alt="" loading="lazy"></span>
+          <span class="nc-client">umarket</span>
+          <span class="nc-title sm"><span data-lang="en">E-commerce creation + Design System</span><span data-lang="es">Creación de ecommerce + Design System</span> <span class="nc-ar" aria-hidden="true">→</span></span>
+        </a>
+      </div>
+    </section>
   </main>
 
   <!-- ===== Footer ===== -->
