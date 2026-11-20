@@ -145,7 +145,8 @@ if (counters.length && 'IntersectionObserver' in window && !reduceMotion) {
     const start = performance.now();
     const step = (now) => {
       const t = Math.min((now - start) / DURATION, 1);
-      el.textContent = before + (target * easeOut(t)).toFixed(decimals) + after;
+      const v = (target * easeOut(t)).toFixed(decimals);
+      el.textContent = before + (num.includes(',') ? v.replace('.', ',') : v) + after;
       if (t < 1) requestAnimationFrame(step);
     };
     requestAnimationFrame(step);
@@ -156,7 +157,7 @@ if (counters.length && 'IntersectionObserver' in window && !reduceMotion) {
   counters.forEach((el) => {
     el.dataset.final = el.textContent.trim();
     // Start at 0 (keeping the symbols) so the number is never seen before it counts
-    el.textContent = el.dataset.final.replace(/[\d.,]+/, (n) => (0).toFixed((n.split(/[.,]/)[1] || '').length));
+    el.textContent = el.dataset.final.replace(/[\d.,]+/, (n) => { const z = (0).toFixed((n.split(/[.,]/)[1] || '').length); return n.includes(',') ? z.replace('.', ',') : z; });
     co.observe(el);
   });
 }
