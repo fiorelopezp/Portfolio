@@ -175,3 +175,10 @@ if (document.querySelector('.ms') && document.fonts) {
   setH();
   window.addEventListener('resize', setH);
 })();
+
+// ---------- 11. The service cards peeking under the hero fade in on load (too little shows for the scroll trigger) ----------
+setTimeout(() => {
+  document.querySelectorAll('.services .reveal').forEach((el) => {
+    if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('is-in');
+  });
+}, 700);
